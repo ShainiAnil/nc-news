@@ -1,9 +1,9 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 const Header = () => {
   return (
-    <div className='head-container'>
-       <h1>Welcome to NC News!</h1> 
+    <div className='header'>
+        <Link to="/"><span>Home</span></Link>
     </div>
   )
 }

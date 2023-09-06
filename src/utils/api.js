@@ -1,11 +1,16 @@
 import axios from 'axios';
-const BASE_URL = "https://news-api-vfij.onrender.com/api";
+
+const ncNews = axios.create({baseURL:"https://news-api-vfij.onrender.com/api"})
 
 export const getArticles = () =>{ 
-   return axios
-   .get(`${BASE_URL}/articles`)
+   return ncNews.get("/articles")
 }
 export const getTopics = () =>{ 
-    return axios
-    .get(`${BASE_URL}/topics`)
- }
+    return ncNews.get("/topics")
+}
+export const getArticleById = (id) =>{
+   return ncNews.get(`/articles/${id}`)
+}
+export const getCommentsByArticle = (id) =>{
+   return ncNews.get(`/articles/${id}/comments`)
+}

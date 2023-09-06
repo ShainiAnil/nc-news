@@ -3,20 +3,40 @@
   margin: 0;
   padding: 0;
 }
+.header{
+  width: 100vw;
+  height: 60px;
+  background: rgb(35,84,169);
+  display: flex;
+}
+.header a{
+  text-decoration: none;
+  color: white;
+}
+.header span{
+  padding: 10px;
+  display: inline-block;
+}
 .head-container{
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 20px auto;
 }
-.head-container h1{
-  font-size: 2rem;
-}
+
 .home-container{
-  
   margin-left: 10% ;
   margin-right: 10%;
   margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+  align-items: center;
+}
+.home-container h1{
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 .article-list{
   display: flex;
@@ -66,14 +86,48 @@ img {
   color: red;
 }
 .btn-read{
-  width: 150px;
-  height: 50px;
+
   background-color: rgb(208, 84, 84);
   margin-bottom: 10px;
-  margin:10px auto;
+  margin:10px 50px;
   color:white;
   text-transform: capitalize;
   padding: 0.4em; 
   font-size: 1em;
   font-weight: 400;
+  
+}
+/* article page */
+.article-container{
+  width: 70vw;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+.article-desc{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+ 
+}
+.article-desc img{
+  width: 100%;
+  object-fit: cover; 
+  height: 450px;
+}
+.article-desc h2{
+  margin-top: 5%;
+}
+p{
+  line-height: 2rem;
+}
+.vote{
+  font-weight: bold;
+  text-align: right;
+}
+.heart-black{
+  cursor: pointer;
+  font-size: 2rem;
+}
+.active{
+  color: red;
 }
