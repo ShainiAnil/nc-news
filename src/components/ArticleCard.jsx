@@ -1,6 +1,6 @@
 import React from 'react'
 import { convertDate } from '../utils/util'
-
+import { Link } from 'react-router-dom'
 const ArticleCard = ({article}) => {
     return (
         <li key={article.title} className='article-Card'>
@@ -11,7 +11,7 @@ const ArticleCard = ({article}) => {
             </div>
             <h4 className='article-title'>{article.title}</h4>
             <h5>by {article.author}</h5>
-            <button className="btn-read">read more</button> 
+            <Link to={`/articles/${article.article_id}`}><button className="btn-read">read more</button></Link>
         </li>
       )
 }
