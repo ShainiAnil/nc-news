@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { getCommentsByArticle } from '../utils/api'
 import "../components/CommentCard.css"
 
-const CommentCard = ({article_id}) => {
-    const [comments, setComments] =useState([])
+const CommentCrd = ({article_id}) => {
+  const [comments, setComments] =useState([])
     useEffect(()=>{
         getCommentsByArticle(article_id)
         .then(({data}) => {
             setComments(data.comments)
         })
     },[])
-    console.log(comments)
+   
   return (
     <div className='comment-card'>
         <h3>Comments:</h3>
@@ -34,4 +34,4 @@ const CommentCard = ({article_id}) => {
   )
 }
 
-export default CommentCard
+export default CommentCrd

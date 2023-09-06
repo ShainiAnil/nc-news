@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { getArticleById } from '../utils/api'
 import { convertDate } from '../utils/util'
 import AddComment from '../components/AddComment'
-import CommentCard from '../components/commentCard'
+import CommentCrd from '../components/CommentCrd'
 
 
 
@@ -37,7 +37,7 @@ const Article = () => {
          {/* <AddComment /> */}
          <div className='comment-container'>
             
-            <CommentCard article_id = {article_id}/> 
+            <CommentCrd article_id = {article_id}/> 
          </div>
     </div>
   )
