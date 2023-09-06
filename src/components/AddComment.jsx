@@ -9,7 +9,8 @@ const AddComment = () => {
             <span>Item name:</span>
             <textarea className="comment" rows={4} id="input-comment" name="input-comment"></textarea>
             </label>
-            <button>Submit</button>
+            <div><button>Submit</button><button type='reset'>Submit</button></div>
+            
         </form>
     </div>
   )

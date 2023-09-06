@@ -119,6 +119,7 @@ img {
 }
 p{
   line-height: 2rem;
+  text-align: justify;
 }
 .vote{
   font-weight: bold;

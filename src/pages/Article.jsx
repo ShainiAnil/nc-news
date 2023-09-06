@@ -4,6 +4,9 @@ import { getArticleById } from '../utils/api'
 import { convertDate } from '../utils/util'
 import AddComment from '../components/AddComment'
 import CommentCard from '../components/commentCard'
+
+
+
 const Article = () => {
     const { article_id } = useParams()
     const [article, setArticle] = useState({})
@@ -31,8 +34,11 @@ const Article = () => {
             <p className='vote'>Add Vote:<span className={active?'active heart-black': 'heart-black'} onClick={handleClick}>&#9825;</span>{article.votes}</p>   
               
         </div>
-        {/* <AddComment />
-        <CommentCard article_id = {article_id}/> */}
+         {/* <AddComment /> */}
+         <div className='comment-container'>
+            
+            <CommentCard article_id = {article_id}/> 
+         </div>
     </div>
   )
 }
