@@ -12,7 +12,9 @@ const CommentCrd = ({article_id}) => {
     },[])
    
   return (
+    comments.length>0?
     <div className='comment-card'>
+       
         <h3>Comments:</h3>
         {  
             comments.map(comment =>{
@@ -30,6 +32,9 @@ const CommentCrd = ({article_id}) => {
             })
 
         }
+    </div>
+    :<div className='comment-card'>
+        <h4>No comments yet! </h4>
     </div>
   )
 }
