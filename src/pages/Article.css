@@ -1,0 +1,16 @@
+.like-dislike{
+    text-align: right;
+    margin-right: 40px;
+    /* margin-bottom: 20px; */
+}
+.like-dislike span{
+    padding: 10px;
+    cursor: pointer;
+    
+}
+.like-dislike-btn{
+    font-size: 20px;
+    font-weight: 400;
+    margin: 15px;
+
+}

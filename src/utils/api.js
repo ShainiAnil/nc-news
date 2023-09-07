@@ -14,3 +14,9 @@ export const getArticleById = (id) =>{
 export const getCommentsByArticle = (id) =>{
    return ncNews.get(`/articles/${id}/comments`)
 }
+export const updateArticleVotes = (article_id, updateVotes) => {
+   return ncNews.patch(`/articles/${article_id}`, updateVotes)
+   .then(({data}) => {
+       return data.article;
+   })
+}
