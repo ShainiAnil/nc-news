@@ -20,3 +20,11 @@ export const updateArticleVotes = (article_id, updateVotes) => {
        return data.article;
    })
 }
+
+export const postComments = (article_id,newComment) => {
+   
+   return  ncNews.post(`/articles/${article_id}/comments`,newComment )
+   .then(({data}) => {
+      return data.comment;
+  })
+}

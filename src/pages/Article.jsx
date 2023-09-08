@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getArticleById, updateArticleVotes } from '../utils/api'
+import { getArticleById, getCommentsByArticle } from '../utils/api'
 import AddComment from '../components/AddComment'
 import CommentCrd from '../components/CommentCrd'
 import "../pages/Article.css"
+import Vote from '../components/Vote'
 
 
 const Article = () => {
@@ -11,38 +12,22 @@ const Article = () => {
     const [article, setArticle] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState("")
-    const [disabled, setDisabled] = useState(false)
-    const [user, setUser] = useState("happyamy2016")
+    const [username, setUsername] = useState("cooljmessy")
+    const [comments, setComments] =useState([])
+    const [votes, setVotes] = useState(0)
     useEffect(()=>{
         setIsLoading(true)
         getArticleById(article_id)
         .then(({data}) => {
             setArticle(data.article)
             setIsLoading(false)
+            setVotes(data.article.votes)
+        })
+        getCommentsByArticle(article_id)
+        .then(({data}) => {
+            setComments(data.comments)
         })
     },[])
-
-    const handleLike = ()=>{ 
-        setArticle((prev) => (
-            { ...prev,votes: prev.votes + 1}
-        ));
-        const updateVotesBy = { inc_votes: 1 } 
-        updateArticleVotes(article_id, updateVotesBy)
-        .catch((error) => {
-            setError(error)
-        })
-        setDisabled(true)
-    }
-    const handleDisLike =()=>{ 
-        setArticle((prev) => ({...prev,votes: prev.votes - 1}
-        ));
-        const updateVotesBy = { inc_votes: -1 } 
-        updateArticleVotes(article_id, updateVotesBy)
-        .catch((error) => {
-            setError(error)
-        })
-        setDisabled(true)
-    }
     if(isLoading) return <p>Loading...</p> 
     if (error) {
         return (
@@ -57,19 +42,13 @@ const Article = () => {
             
             <img src={article.article_img_url} alt={article.description}/>
             <p>{article.body}</p> 
-            
-                <div className='like-dislike'>
-                    <button className='like-dislike-btn' disabled ={disabled} onClick={handleLike}><span>&#128077;</span>{article.votes>0?article.votes:0}
-                    </button>
-                    <button className='like-dislike-btn' disabled ={disabled} onClick={handleDisLike}><span>&#128078;</span>{article.votes<0?-article.votes:0}</button>
-                </div>
-             
-              
+            <div className="vote">Votes:<span className='heart'>&#10084;</span>{votes}</div>
+            <Vote article={article} setArticle={setArticle} article_id={article_id} setVotes={setVotes} votes={votes} setError={setError}/>
         </div>
-         {/* <AddComment /> */}
+         {<AddComment comments = {comments} setComments = {setComments} username={username} article_id = {article_id} setError={setError}/> }
          <div className='comment-container'>
             
-            <CommentCrd article_id = {article_id}/> 
+            <CommentCrd article_id = {article_id} comments = {comments} setComments = {setComments} username = {username}/> 
          </div>
     </div>
   )
