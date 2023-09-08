@@ -2,14 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { getCommentsByArticle } from '../utils/api'
 import "../components/CommentCard.css"
 
-const CommentCrd = ({article_id}) => {
-  const [comments, setComments] =useState([])
-    useEffect(()=>{
-        getCommentsByArticle(article_id)
-        .then(({data}) => {
-            setComments(data.comments)
-        })
-    },[])
+const CommentCrd = ({article_id,comments,setComments}) => {
+  
    
   return (
     comments.length>0?

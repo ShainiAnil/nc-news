@@ -1,0 +1,28 @@
+.display-item{
+    display: flex;
+    gap: 20px;
+}
+.form-data textarea{
+    margin: 20px;
+    height: 100px;
+    width: 450px;
+    border-radius: 8px;
+    border: 1px solid gray;
+}
+.form-data label{
+    width: 300px;
+}
+.form-data button{
+    margin-left: 20px;
+    margin-bottom: 10px;
+    background-color: rgb(100, 151, 205);
+}
+textarea:focus{
+    cursor: text;
+}
+.error-msg{
+    color:red
+}
+.success-msg{
+    color: green;
+}
