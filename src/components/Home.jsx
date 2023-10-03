@@ -3,20 +3,22 @@ import Articles from './Articles'
 import Nav from './Nav'
 import { getTopics } from '../utils/api'
 
-const Home = () => {
+const Home = ({isLoading, setIsLoading}) => {
     const[topics,setTopics] =useState([])
+    
     useEffect(()=>{
-        // setIsLoading(true)
+        setIsLoading(true)
         getTopics()
         .then(({data}) => {
             setTopics(data.topics)
+            setIsLoading(false)
         })
     },[])
   return (
     <div className='home-container'>
         <h1>Welcome to NC News!!!</h1>
-        {/* <Nav topics={topics}/> */}
-        <Articles />
+         
+        <Articles isLoading={isLoading} setIsLoading = {setIsLoading} />
     </div>
   )
 }

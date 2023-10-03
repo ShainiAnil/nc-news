@@ -4,18 +4,18 @@ import { postComments } from '../utils/api'
 
 const AddComment = ({comments,setComments,username,article_id,setError}) => { 
   const[comment, setComment] = useState("")
-  const [message, setMessage] = useState("")
+  const[userMessage,setUserMessage] = useState("")
   const changeHandler = (event) =>{
     setComment(event.target.value)
-   
   }
   const handleSubmit = (event)=>{
     event.preventDefault()
+    setError("")
     const newComment = {}
     if(comment.length < 5){
-      setMessage('Text is too short')
+      setUserMessage('Text is too short')
     }
-    else{setMessage('')}
+    else{setUserMessage('')}
     newComment.username = username;
     newComment.body = event.target.inputComment.value
     
@@ -25,7 +25,7 @@ const AddComment = ({comments,setComments,username,article_id,setError}) => {
       setComments((prev) => ([newCommentCopy,...comments]
         ));
         setComment("")
-        setMessage("Comment added successfully!")
+        setUserMessage("Comment added successfully!")
       postComments(article_id,newComment)
 
         .catch((error) => {
@@ -40,10 +40,10 @@ const AddComment = ({comments,setComments,username,article_id,setError}) => {
        
         <form className='form-data' onSubmit={handleSubmit}>
             <div className="display-item">
-              <label htmlFor="input-textarea">Add comment: 
+              <label htmlFor="input-textarea">Add a comment: 
             
               <textarea className="comment"   id="input-textarea" name="inputComment" onChange={changeHandler} value={comment}></textarea></label>
-              {message &&<span className={message==='Text is too short'?'error-msg':'success-msg'}>{message}</span>}
+              {userMessage &&<span className={userMessage==='Text is too short'?'error-msg':'success-msg'}>{userMessage}</span>}
             </div>
             <div className="display-item">
               <button>Submit</button>
