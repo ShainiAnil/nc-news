@@ -7,13 +7,18 @@
   width: 100vw;
   height: 60px;
   background: rgb(35,84,169);
-  display: flex;
+  /* display: flex; */
 }
-.header a{
+.nav-link{
+  display: flex;
+  flex-direction: row;
+
+}
+.nav-link a{
   text-decoration: none;
   color: white;
 }
-.header span{
+.nav-link span{
   padding: 10px;
   display: inline-block;
 }
@@ -135,3 +140,10 @@ p{
 .active{
   color: red;
 }
+.Nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+

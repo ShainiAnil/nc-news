@@ -12,7 +12,8 @@ const Article = () => {
     const [article, setArticle] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState("")
-    const [username, setUsername] = useState("cooljmessy")
+    const [username, setUsername] = useState("happyamy2016")
+    const [userMessage, setUserMessage] = useState("")
     const [comments, setComments] =useState([])
     const [votes, setVotes] = useState(0)
     useEffect(()=>{
@@ -45,10 +46,10 @@ const Article = () => {
             <div className="vote">Votes:<span className='heart'>&#10084;</span>{votes}</div>
             <Vote article={article} setArticle={setArticle} article_id={article_id} setVotes={setVotes} votes={votes} setError={setError}/>
         </div>
-         {<AddComment comments = {comments} setComments = {setComments} username={username} article_id = {article_id} setError={setError}/> }
+         {<AddComment comments = {comments} setComments = {setComments} username={username} article_id = {article_id} setError={setError} userMessage={userMessage} setUserMessage={setUserMessage}/> }
          <div className='comment-container'>
             
-            <CommentCrd article_id = {article_id} comments = {comments} setComments = {setComments} username = {username}/> 
+            <CommentCrd article_id = {article_id} comments = {comments} setComments = {setComments} username = {username} setError = {setError} userMessage={userMessage} setUserMessage={setUserMessage}/> 
          </div>
     </div>
   )

@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import {useParams} from "react-router-dom"
-import ArticleCard from './ArticleCard'
+import ArticleCard from '../components/ArticleCard'
 import { getArticles, getArticlesByTopic } from '../utils/api'
 
-const Articles = ({isLoading,setIsLoading}) => {
+const Topic = () => {
     const[articles, setArticles] =useState([])
-    
-    
+    const {topic} = useParams()
+    console.log(topic)
+    const[isLoading,setIsLoading] =useState(false)
     useEffect(()=>{
         setIsLoading(true)
-        getArticles()
+        getArticlesByTopic(topic)
         .then(({data})=>{ 
-        setArticles(data.articles)
-        setIsLoading(false)
+            setArticles(data.articles)
+            setIsLoading(false)
         })
-        
-    },[])
+    },[topic])
     if(isLoading) return <p>Loading...</p>
     return (
         <ul className='article-list'>
@@ -30,4 +30,4 @@ const Articles = ({isLoading,setIsLoading}) => {
     )
 }
 
-export default Articles
+export default Topic
